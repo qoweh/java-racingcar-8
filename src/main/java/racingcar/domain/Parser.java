@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.List;
 import racingcar.dto.GameRequest;
 
-public class Converter {
+public class Parser {
     private final String names;
     private final String count;
     private static final String MESSAGE_EMPTY_ENTIRE_INPUT = "빈 문자열입니다.";
@@ -14,7 +14,7 @@ public class Converter {
     private static final String MESSAGE_TOO_SMALL = "시도 횟수는 1 이상이어야 합니다. (시도 횟수) : ";
     private static final String MESSAGE_TOO_BIG = "시도 횟수는 2,147,483,647 이하여야 합니다. (시도 횟수) : ";
 
-    public Converter(GameRequest gameRequest) {
+    public Parser(GameRequest gameRequest) {
         this.names = gameRequest.names();
         this.count = gameRequest.count();
     }
