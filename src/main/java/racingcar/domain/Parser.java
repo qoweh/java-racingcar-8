@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Collections;
 import java.util.List;
 import racingcar.dto.GameRequest;
 
@@ -9,6 +10,7 @@ public class Parser {
     private static final String MESSAGE_EMPTY_ENTIRE_INPUT = "빈 문자열입니다.";
     private static final String MESSAGE_EMPTY_SPECIFIC_NAME = "특정 이름이 비었습니다. (전체 문자열) : ";
     private static final String MESSAGE_EMPTY_EXIST = "특정 이름에 공백이 존재합니다. (특정 문자열) : ";
+    private static final String MESSAGE_SAME_NAME_EXIST = "특정 이름이 중복됩니다. (특정 문자열) : ";
     private static final String MESSAGE_TOO_LONG = "특정 이름이 길이(>5)를 초과했습니다. (특정 문자열) : ";
     private static final String MESSAGE_INVALID_NUMBER_FORAMT = "시도 횟수는 숫자여야 합니다. (시도 횟수) : ";
     private static final String MESSAGE_TOO_SMALL = "시도 횟수는 1 이상이어야 합니다. (시도 횟수) : ";
