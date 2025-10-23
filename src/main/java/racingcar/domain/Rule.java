@@ -9,5 +9,5 @@ public class Rule {
 
     public boolean valid(int value) {
         return value > conditionValue;
-    }ㅁ
+    }
 }
