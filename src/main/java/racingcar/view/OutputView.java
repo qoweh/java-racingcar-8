@@ -47,6 +47,6 @@ public class OutputView {
             return names.get(0);
         }
 
-        return String.join(",", names);
+        return String.join(", ", names);
     }
 }
