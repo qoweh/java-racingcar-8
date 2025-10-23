@@ -4,19 +4,27 @@ import java.util.List;
 import racingcar.domain.Car;
 
 public class OutputView {
-    private static final String OUTPUT_STATUS_MESSAGE = "실행 결과";
+    private static boolean firstPrint = true;
+    private static final String OUTPUT_STATUS_MESSAGE = "\n실행 결과";
     private static final String OUTPUT_SCORE_LOG = "-";
     private static final String OUTPUT_STATUS_FORMAT = " : ";
     private static final String OUTPUT_RESULT_MESSAGE = "최종 우승자 : ";
 
     public static void status(List<Car> cars) {
-        System.out.println(OUTPUT_STATUS_MESSAGE);
+        printResultFormat();
 
         for (Car car : cars) {
             eachCarStatus(car);
         }
 
         System.out.println();
+    }
+
+    private static void printResultFormat() {
+        if (firstPrint) {
+            System.out.println(OUTPUT_STATUS_MESSAGE);
+            firstPrint = false;
+        }
     }
 
     private static void eachCarStatus(Car car) {
