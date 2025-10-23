@@ -20,14 +20,14 @@ public class Game {
 
     public void play() {
         for (Car car : cars) {
-            int conditionNumber = makeConditionNumber();
-            if (rule.valid(conditionNumber)) {
+            int number = makeNumber();
+            if (rule.valid(number)) {
                 car.move();
             }
         }
     }
 
-    private int makeConditionNumber() {
+    private int makeNumber() {
         return pickNumberInRange(START_INDEX, END_INDEX);
     }
 

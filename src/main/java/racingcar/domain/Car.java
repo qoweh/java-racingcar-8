@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Car implements Comparable<Car> {
-    private String name;
+    private final String name;
     private int score;
 
     public Car(String name, int score) {
