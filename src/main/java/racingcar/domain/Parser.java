@@ -38,10 +38,15 @@ public class Parser {
         for (String name : splitNames) {
             if (name.isEmpty()) { // ,n1,n2 혹은 n1,,n2
                 throw new IllegalArgumentException(MESSAGE_EMPTY_SPECIFIC_NAME + this.names);
-            } else if (name.isBlank()) { // n1,  ,n2 혹은 n1, n2 ,n3
+            }
+            if (name.isBlank()) { // n1,  ,n2 혹은 n1, n2 ,n3
                 throw new IllegalArgumentException(MESSAGE_EMPTY_EXIST + name);
-            } else if (name.length() >= 5) {
+            }
+            if (name.length() >= 5) {
                 throw new IllegalArgumentException(MESSAGE_TOO_LONG + name);
+            }
+            if (Collections.frequency(splitNames, name) != 1) {
+                throw new IllegalArgumentException(MESSAGE_SAME_NAME_EXIST + name);
             }
         }
     }
