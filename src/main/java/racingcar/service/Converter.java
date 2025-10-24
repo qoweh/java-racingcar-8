@@ -1,7 +1,8 @@
-package racingcar.domain;
+package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.Car;
 
 public class Converter {
     private final List<String> names;

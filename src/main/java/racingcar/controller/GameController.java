@@ -2,9 +2,9 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.domain.Converter;
+import racingcar.service.Converter;
 import racingcar.domain.Game;
-import racingcar.domain.Parser;
+import racingcar.service.Parser;
 import racingcar.dto.GameRequest;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
