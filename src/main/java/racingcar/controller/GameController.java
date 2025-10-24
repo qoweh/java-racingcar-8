@@ -11,8 +11,8 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class GameController {
-    private Parser parser;
-    private Converter converter;
+    private final Parser parser;
+    private final Converter converter;
 
     public GameController(Parser parser, Converter converter) {
         this.parser = parser;

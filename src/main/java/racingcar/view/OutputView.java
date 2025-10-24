@@ -2,14 +2,11 @@ package racingcar.view;
 
 import java.util.List;
 
+import racingcar.constant.OutputViewMessage;
 import racingcar.domain.Car;
 
 public class OutputView {
     private static boolean firstPrint = true;
-    private static final String OUTPUT_STATUS_MESSAGE = "\n실행 결과";
-    private static final String OUTPUT_SCORE_LOG = "-";
-    private static final String OUTPUT_STATUS_FORMAT = " : ";
-    private static final String OUTPUT_RESULT_MESSAGE = "최종 우승자 : ";
 
     public static void status(List<Car> cars) {
         printResultFormat();
@@ -23,7 +20,7 @@ public class OutputView {
 
     private static void printResultFormat() {
         if (firstPrint) {
-            System.out.println(OUTPUT_STATUS_MESSAGE);
+            System.out.println(OutputViewMessage.STATUS_MESSAGE);
             firstPrint = false;
         }
     }
@@ -32,20 +29,20 @@ public class OutputView {
         String name = car.getName();
 
         int score = car.getScore();
-        String scoreLog = OUTPUT_SCORE_LOG.repeat(score);
+        String scoreLog = OutputViewMessage.SCORE_SYMBOL.repeat(score);
 
-        System.out.println(name + OUTPUT_STATUS_FORMAT + scoreLog);
+        System.out.println(name + OutputViewMessage.STATUS_SYMBOL + scoreLog);
     }
 
     public static void result(List<String> names) {
         String result = joinString(names);
 
-        System.out.println(OUTPUT_RESULT_MESSAGE + result);
+        System.out.println(OutputViewMessage.RESULT_MESSAGE + result);
     }
 
     private static String joinString(List<String> names) {
         if (names.size() == 1) {
-            return names.get(0);
+            return names.getFirst();
         }
 
         return String.join(", ", names);

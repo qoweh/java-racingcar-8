@@ -6,7 +6,6 @@ import java.util.List;
 import racingcar.constant.ValidatorMessage;
 
 public class StringValidator implements Validator{
-
     @Override
     public void isNonEmptyString(String input) {
         if (input == null || input.isBlank()) { // 빈 입력값, 공백 입력값
@@ -39,5 +38,9 @@ public class StringValidator implements Validator{
                 );
             }
         }
+    }
+
+    private void is() {
+
     }
 }

@@ -13,7 +13,7 @@ public class Game {
 
     public Game(List<Car> cars) {
         this.cars = cars;
-        this.rule = new Rule(GameValue.CONDITION_NUMBER.getValue());
+        this.rule = new Rule(GameValue.CONDITION_NUMBER);
     }
 
     public void play() {
@@ -27,8 +27,8 @@ public class Game {
 
     private int makeNumber() {
         return pickNumberInRange(
-                GameValue.START_INDEX.getValue(),
-                GameValue.END_INDEX.getValue()
+                GameValue.START_INDEX,
+                GameValue.END_INDEX
         );
     }
 
