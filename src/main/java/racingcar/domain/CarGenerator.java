@@ -1,9 +1,7 @@
-package racingcar.service;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import racingcar.domain.Car;
 
 public class CarGenerator {
     private static final int INIT_SCORE = 0;
