@@ -7,19 +7,19 @@ import racingcar.dto.GameRequest;
 
 public class InputView {
     public static GameRequest readValues() {
-        String names = getNames();
-        String count = getCount();
+        String names = readNames();
+        String count = readCount();
         Console.close();
 
         return new GameRequest(names, count);
     }
 
-    private static String getNames() {
+    private static String readNames() {
         System.out.println(InputViewMessage.NAME_MESSAGE);
         return Console.readLine();
     }
 
-    private static String getCount() {
+    private static String readCount() {
         System.out.println(InputViewMessage.COUNT_MESSAGE);
         return Console.readLine();
     }

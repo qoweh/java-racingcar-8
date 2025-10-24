@@ -4,16 +4,16 @@ import java.util.List;
 
 import racingcar.dto.GameRequest;
 
-public class Parser {
+public class CarComponentGenerator {
     private final StringValidator stringValidator;
     private final NumberValidator numberValidator;
 
-    public Parser(StringValidator stringValidator, NumberValidator numberValidator) {
+    public CarComponentGenerator(StringValidator stringValidator, NumberValidator numberValidator) {
         this.stringValidator = stringValidator;
         this.numberValidator = numberValidator;
     }
 
-    public List<String> getNames(GameRequest gameRequest) {
+    public List<String> namesFrom(GameRequest gameRequest) {
         String names = gameRequest.names();
 
         stringValidator.isNonEmptyString(names);
@@ -24,7 +24,7 @@ public class Parser {
         return splitNames;
     }
 
-    public int getCount(GameRequest gameRequest) {
+    public int countFrom(GameRequest gameRequest) {
         String count = gameRequest.count();
 
         numberValidator.isNonEmptyString(count);
