@@ -2,19 +2,17 @@ package racingcar.config;
 
 import racingcar.constant.GameValue;
 import racingcar.controller.GameController;
-import racingcar.domain.CarComponentGenerator;
-import racingcar.domain.CarGenerator;
-import racingcar.domain.Game;
-import racingcar.domain.RandomNumberGenerator;
-import racingcar.domain.Rule;
-import racingcar.validator.InputValidator;
+import racingcar.domain.*;
+import racingcar.validator.CountValidator;
+import racingcar.validator.NamesValidator;
 
 public class AppConfig {
     public GameController gameController() {
-        InputValidator inputValidator = new InputValidator();
+        NamesValidator namesValidator = new NamesValidator();
+        CountValidator countValidator = new CountValidator();
 
         CarComponentGenerator carComponentGenerator
-                = new CarComponentGenerator(inputValidator);
+                = new CarComponentGenerator(namesValidator, countValidator);
 
         CarGenerator carGenerator = new CarGenerator();
 
