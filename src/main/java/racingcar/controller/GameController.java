@@ -1,26 +1,31 @@
 package racingcar.controller;
 
 import java.util.List;
+
 import racingcar.domain.Car;
-import racingcar.service.Converter;
 import racingcar.domain.Game;
-import racingcar.service.Parser;
 import racingcar.dto.GameRequest;
+import racingcar.service.Converter;
+import racingcar.service.Parser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class GameController {
+    private Parser parser;
+    private Converter converter;
 
+    public GameController(Parser parser, Converter converter) {
+        this.parser = parser;
+        this.converter = converter;
+    }
 
     public void run() {
         GameRequest gameRequest = InputView.readValues();
 
-        Parser parser = new Parser(gameRequest);
-        List<String> names = parser.getNames();
-        int count = parser.getCount();
+        List<String> names = this.parser.getNames(gameRequest);
+        int count = this.parser.getCount(gameRequest);
 
-        Converter converter = new Converter(names);
-        List<Car> cars = converter.getCars();
+        List<Car> cars = this.converter.getCars(names);
 
         Game game = new Game(cars);
 

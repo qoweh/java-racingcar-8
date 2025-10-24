@@ -4,31 +4,32 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import racingcar.constant.GameValue;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Game {
     private final List<Car> cars;
     private final Rule rule;
-    private static final int START_INDEX = 0;
-    private static final int END_INDEX = 9;
-    private static final int CONDITION_NUMBER = 4;
 
     public Game(List<Car> cars) {
         this.cars = cars;
-        rule = new Rule(CONDITION_NUMBER);
+        this.rule = new Rule(GameValue.CONDITION_NUMBER.getValue());
     }
 
     public void play() {
-        for (Car car : cars) {
+        for (Car car : this.cars) {
             int number = makeNumber();
-            if (rule.valid(number)) {
+            if (this.rule.valid(number)) {
                 car.move();
             }
         }
     }
 
     private int makeNumber() {
-        return pickNumberInRange(START_INDEX, END_INDEX);
+        return pickNumberInRange(
+                GameValue.START_INDEX.getValue(),
+                GameValue.END_INDEX.getValue()
+        );
     }
 
     public List<String> getWinners() {
@@ -36,7 +37,7 @@ public class Game {
 
         int maxScore = getMaxScore();
 
-        for (Car car : cars) {
+        for (Car car : this.cars) {
             if (car.getScore() < maxScore) {
                 break;
             }
@@ -47,7 +48,7 @@ public class Game {
     }
 
     private int getMaxScore() {
-        Collections.sort(cars);
-        return cars.get(0).getScore();
+        Collections.sort(this.cars);
+        return this.cars.getFirst().getScore();
     }
 }
