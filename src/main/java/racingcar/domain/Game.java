@@ -17,9 +17,9 @@ public class Game {
     }
 
     public void play() {
-        for (Car car : this.cars) {
+        for (Car car : cars) {
             int number = makeNumber();
-            if (this.rule.valid(number)) {
+            if (rule.valid(number)) {
                 car.move();
             }
         }
@@ -37,7 +37,7 @@ public class Game {
 
         int maxScore = getMaxScore();
 
-        for (Car car : this.cars) {
+        for (Car car : cars) {
             if (car.getScore() < maxScore) {
                 break;
             }
@@ -48,7 +48,7 @@ public class Game {
     }
 
     private int getMaxScore() {
-        Collections.sort(this.cars);
-        return this.cars.getFirst().getScore();
+        Collections.sort(cars);
+        return cars.getFirst().getScore();
     }
 }

@@ -22,10 +22,10 @@ public class GameController {
     public void run() {
         GameRequest gameRequest = InputView.readValues();
 
-        List<String> names = this.parser.getNames(gameRequest);
-        int count = this.parser.getCount(gameRequest);
+        List<String> names = parser.getNames(gameRequest);
+        int count = parser.getCount(gameRequest);
 
-        List<Car> cars = this.converter.getCars(names);
+        List<Car> cars = converter.getCars(names);
 
         Game game = new Game(cars);
 
