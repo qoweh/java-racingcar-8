@@ -13,7 +13,10 @@ public class GameController {
     private final CarGenerator carGenerator;
     private final Game game;
 
-    public GameController(CarComponentGenerator carComponentGenerator, CarGenerator carGenerator, Game game) {
+    public GameController(
+            CarComponentGenerator carComponentGenerator,
+            CarGenerator carGenerator,
+            Game game) {
         this.carComponentGenerator = carComponentGenerator;
         this.carGenerator = carGenerator;
         this.game = game;
