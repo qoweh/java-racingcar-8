@@ -1,11 +1,12 @@
 package racingcar.controller;
 
 import java.util.List;
+
 import racingcar.domain.Car;
+import racingcar.service.CarComponentGenerator;
+import racingcar.domain.CarGenerator;
 import racingcar.domain.Game;
 import racingcar.dto.GameRequest;
-import racingcar.service.CarComponentGenerator;
-import racingcar.service.CarGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -28,6 +29,7 @@ public class GameController {
 
         List<Car> cars = carGenerator.from(names);
 
+        OutputView.gameStart();
         for (int i = 0; i < count; i++) {
             game.play(cars);
             OutputView.status(cars);

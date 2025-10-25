@@ -3,9 +3,9 @@ package racingcar.validator;
 import racingcar.constant.ValidatorMessage;
 
 public class CountValidator extends InputValidator {
-    private static final String NUMBER_TYPE = "-?\\d+";
+    private static final String NUMBER_TYPE = "(\\s)*-?\\d+(\\s)*";
 
-    public void isValidNumber(String input) {
+    public void isValidNumberString(String input) {
         if (!input.matches(NUMBER_TYPE)) {
             throw new IllegalArgumentException(
                     ValidatorMessage.INVALID_NUMBER.with(input)
@@ -18,17 +18,18 @@ public class CountValidator extends InputValidator {
         }
     }
 
-    public void isValidSize(int number) {
+    public int isValidSizeAndGet(String input) {
         try {
-            Math.addExact(number, 1);
-        } catch (ArithmeticException e) {
+            int number = Integer.parseInt(input);
+            if (number == 0) {
+                throw new IllegalArgumentException(
+                        ValidatorMessage.ZERO_NUMBER.with(String.valueOf(input))
+                );
+            }
+            return number;
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(
-                    ValidatorMessage.TOO_BIG.with(String.valueOf(number))
-            );
-        }
-        if (number == 0) {
-            throw new IllegalArgumentException(
-                    ValidatorMessage.ZERO_NUMBER.with(String.valueOf(number))
+                    ValidatorMessage.TOO_BIG.with(String.valueOf(input))
             );
         }
     }

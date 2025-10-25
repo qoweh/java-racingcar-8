@@ -16,8 +16,8 @@ class CountValidatorTest extends NsTest{
     private static final String FAIL_TYPE = "[실패 케이스] ";
 
     @ParameterizedTest(name = "입력값:{0}")
-    @ValueSource(strings = {" "})  // 빈 문자열("")은 NsTest 프레임워크 제한으로 통합 테스트 불가
-    @DisplayName(FAIL_TYPE + "공백만 있는 문자열")
+    @ValueSource(strings = {" "})
+   패 @DisplayName(FAIL_TYPE + "공백 문자열")
     void 잘못된_입력값1_공백_문자열(String input) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("kim,lee", input))
@@ -31,10 +31,6 @@ class CountValidatorTest extends NsTest{
     @Test
     @DisplayName(FAIL_TYPE + "빈 문자열")
     void 잘못된_입력값1_빈_문자열() {
-        // NsTest의 runException은 빈 문자열을 Console.readLine()에 제대로 주입하지 못함
-        // 이유: 빈 문자열은 입력 스트림에서 "EOF"로 해석되어 readLine()이 호출되지 않음
-        // 따라서 단위 테스트로만 검증
-        
         //given
         String input = "";
         InputValidator inputValidator = new InputValidator();

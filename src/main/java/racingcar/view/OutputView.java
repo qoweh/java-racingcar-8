@@ -6,23 +6,16 @@ import racingcar.constant.OutputViewMessage;
 import racingcar.domain.Car;
 
 public class OutputView {
-    private static boolean firstPrint = true;
+    public static void gameStart() {
+        System.out.println(OutputViewMessage.STATUS_MESSAGE);
+    }
 
     public static void status(List<Car> cars) {
-        printResultFormat();
-
         for (Car car : cars) {
             eachCarStatus(car);
         }
 
         System.out.println();
-    }
-
-    private static void printResultFormat() {
-        if (firstPrint) {
-            System.out.println(OutputViewMessage.STATUS_MESSAGE);
-            firstPrint = false;
-        }
     }
 
     private static void eachCarStatus(Car car) {

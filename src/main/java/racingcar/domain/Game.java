@@ -24,7 +24,6 @@ public class Game {
     }
 
     public List<String> getWinners(List<Car> cars) {
-        maxScoreCalculator.sort(cars);
         int maxScore = maxScoreCalculator.score(cars);
         return getWinnersName(cars, maxScore);
     }
@@ -33,7 +32,7 @@ public class Game {
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
             if (car.getScore() < maxScore) {
-                break;
+                continue;
             }
             winners.add(car.getName());
         }
