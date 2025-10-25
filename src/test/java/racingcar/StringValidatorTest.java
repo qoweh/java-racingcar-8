@@ -20,9 +20,7 @@ class StringValidatorTest extends NsTest{
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(input, "1"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(
-                                ValidatorMessage.EMPTY_ENTIRE_INPUT.getMessage()
-                        )
+                        .hasMessageContaining(ValidatorMessage.EMPTY_ENTIRE_INPUT)
         );
     }
 
@@ -33,9 +31,7 @@ class StringValidatorTest extends NsTest{
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(input, "1"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(
-                                ValidatorMessage.EMPTY_SPECIFIC_NAME.getMessage()
-                        )
+                        .hasMessageContaining(ValidatorMessage.EMPTY_SPECIFIC_NAME)
         );
     }
 
@@ -46,9 +42,7 @@ class StringValidatorTest extends NsTest{
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(input, "1"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(
-                                ValidatorMessage.TOO_LONG.getMessage()
-                        )
+                        .hasMessageContaining(ValidatorMessage.TOO_LONG)
         );
     }
 
@@ -59,9 +53,7 @@ class StringValidatorTest extends NsTest{
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(input, "1"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(
-                                ValidatorMessage.SAME_NAME_EXIST.getMessage()
-                        )
+                        .hasMessageContaining(ValidatorMessage.SAME_NAME_EXIST)
         );
     }
 

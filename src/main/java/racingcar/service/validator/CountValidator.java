@@ -13,7 +13,7 @@ public class CountValidator extends InputValidator {
     private void validateNumber(String input) {
         if (!input.matches(NUMBER_TYPE)) {
             throw new IllegalArgumentException(
-                    ValidatorMessage.INVALID_NUMBER.with(input)
+                    with(ValidatorMessage.INVALID_NUMBER, input)
             );
         }
     }
@@ -21,7 +21,7 @@ public class CountValidator extends InputValidator {
     private void validatePositiveNumber(String input) {
         if (input.contains("-")) {
             throw new IllegalArgumentException(
-                    ValidatorMessage.NEGATIVE_NUMBER.with(input)
+                    with(ValidatorMessage.NEGATIVE_NUMBER, input)
             );
         }
     }
@@ -33,7 +33,7 @@ public class CountValidator extends InputValidator {
             return number;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(
-                    ValidatorMessage.TOO_BIG.with(String.valueOf(input))
+                    with(ValidatorMessage.TOO_BIG, String.valueOf(input))
             );
         }
     }
@@ -41,7 +41,7 @@ public class CountValidator extends InputValidator {
     private void validateGreaterThanZero(String input, int number) {
         if (number == 0) {
             throw new IllegalArgumentException(
-                    ValidatorMessage.ZERO_NUMBER.with(String.valueOf(input))
+                    with(ValidatorMessage.ZERO_NUMBER, String.valueOf(input))
             );
         }
     }

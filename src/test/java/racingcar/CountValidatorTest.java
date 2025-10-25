@@ -21,9 +21,7 @@ class CountValidatorTest extends NsTest{
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("kim,lee", input))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(
-                                ValidatorMessage.EMPTY_ENTIRE_INPUT.getMessage()
-                        )
+                        .hasMessageContaining(ValidatorMessage.EMPTY_ENTIRE_INPUT)
         );
     }
 
@@ -40,9 +38,7 @@ class CountValidatorTest extends NsTest{
         //then
         assertThat(throwable)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(
-                        ValidatorMessage.EMPTY_ENTIRE_INPUT.getMessage()
-                );
+                .hasMessageContaining(ValidatorMessage.EMPTY_ENTIRE_INPUT);
     }
 
     @ParameterizedTest(name = "입력값:{0}")
@@ -52,9 +48,7 @@ class CountValidatorTest extends NsTest{
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("kim,lee", input))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(
-                                ValidatorMessage.INVALID_NUMBER.getMessage()
-                        )
+                        .hasMessageContaining(ValidatorMessage.INVALID_NUMBER)
         );
     }
 
@@ -65,9 +59,7 @@ class CountValidatorTest extends NsTest{
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("kim,lee", input))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(
-                                ValidatorMessage.ZERO_NUMBER.getMessage()
-                        )
+                        .hasMessageContaining(ValidatorMessage.ZERO_NUMBER)
         );
     }
 
@@ -78,9 +70,7 @@ class CountValidatorTest extends NsTest{
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("kim,lee", input))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(
-                                ValidatorMessage.NEGATIVE_NUMBER.getMessage()
-                        )
+                        .hasMessageContaining(ValidatorMessage.NEGATIVE_NUMBER)
         );
     }
 
@@ -91,9 +81,7 @@ class CountValidatorTest extends NsTest{
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("kim,lee", input))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(
-                                ValidatorMessage.TOO_BIG.getMessage()
-                        )
+                        .hasMessageContaining(ValidatorMessage.TOO_BIG)
         );
     }
 

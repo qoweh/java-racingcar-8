@@ -6,7 +6,6 @@ import racingcar.constant.ValidatorMessage;
 
 public class NamesValidator extends InputValidator {
     private static final int AS_MANY_AS_POSSIBLE = -1;
-    private static final String BLANK = " ";
 
     public List<String> isValidEachNameAndGet(String originalInput) {
         List<String> splitNames = List.of(originalInput.split(",", AS_MANY_AS_POSSIBLE));
@@ -22,7 +21,7 @@ public class NamesValidator extends InputValidator {
         if (name.isEmpty()) {
             consoleCleanUp();
             throw new IllegalArgumentException(
-                    ValidatorMessage.EMPTY_SPECIFIC_NAME.with(originalNames)
+                    with(ValidatorMessage.EMPTY_SPECIFIC_NAME, originalNames)
             );
         }
     }
@@ -31,7 +30,7 @@ public class NamesValidator extends InputValidator {
         if (name.length() > 5) {
             consoleCleanUp();
             throw new IllegalArgumentException(
-                    ValidatorMessage.TOO_LONG.with(name)
+                    with(ValidatorMessage.TOO_LONG, name)
             );
         }
     }
@@ -40,7 +39,7 @@ public class NamesValidator extends InputValidator {
         if (Collections.frequency(names, name) != 1) {
             consoleCleanUp();
             throw new IllegalArgumentException(
-                    ValidatorMessage.SAME_NAME_EXIST.with(name)
+                    with(ValidatorMessage.SAME_NAME_EXIST, name)
             );
         }
     }
