@@ -14,7 +14,7 @@ class StringValidatorTest extends NsTest{
     private static final String FAIL_TYPE = "[실패 케이스] ";
 
     @ParameterizedTest(name = "입력값:{0}")
-    @ValueSource(strings = {"", " "})
+    @ValueSource(strings = {"", " ", "\n"})
     @DisplayName(FAIL_TYPE + "빈 문자열")
     void 잘못된_입력값1(String input) {
         assertSimpleTest(() ->
@@ -70,7 +70,7 @@ class StringValidatorTest extends NsTest{
     @DisplayName(SUCCESS_TYPE + "공백이 포함된 이름 존재")
     void 정상적인_입력값1(String input) {
         assertSimpleTest(() ->
-                assertThatCode(() -> runException(input, "1"))
+                assertThatCode(() -> run(input, "1"))
         );
     }
 
@@ -79,7 +79,7 @@ class StringValidatorTest extends NsTest{
     @DisplayName(SUCCESS_TYPE + "중복된 것처럼 보이는 이름 존재")
     void 정상적인_입력값2(String input) {
         assertSimpleTest(() ->
-                assertThatCode(() -> runException(input, "1"))
+                assertThatCode(() -> run(input, "1"))
         );
     }
 

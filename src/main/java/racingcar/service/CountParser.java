@@ -1,7 +1,6 @@
 package racingcar.service;
 
-import racingcar.dto.GameRequest;
-import racingcar.validator.CountValidator;
+import racingcar.service.validator.CountValidator;
 
 public class CountParser {
     private final CountValidator countValidator;
@@ -10,9 +9,8 @@ public class CountParser {
         this.countValidator = countValidator;
     }
 
-    public int parse(GameRequest gameRequest) {
-        String countBeforeTrim = gameRequest.count();
-        String count = countBeforeTrim.trim();
+    public int parse(String input) {
+        String count = input.trim();
 
         countValidator.isNonEmptyString(count);
         countValidator.isValidNumberString(count);

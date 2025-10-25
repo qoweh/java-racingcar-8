@@ -3,11 +3,10 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.constant.ValidatorMessage;
-import racingcar.validator.InputValidator;
+import racingcar.service.validator.InputValidator;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
@@ -16,8 +15,8 @@ class CountValidatorTest extends NsTest{
     private static final String FAIL_TYPE = "[실패 케이스] ";
 
     @ParameterizedTest(name = "입력값:{0}")
-    @ValueSource(strings = {" "})
-   패 @DisplayName(FAIL_TYPE + "공백 문자열")
+    @ValueSource(strings = {" ", "\n"})
+    @DisplayName(FAIL_TYPE + "공백 문자열")
     void 잘못된_입력값1_공백_문자열(String input) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("kim,lee", input))
@@ -28,11 +27,11 @@ class CountValidatorTest extends NsTest{
         );
     }
 
-    @Test
+    @ParameterizedTest(name = "입력값:{0}")
+    @ValueSource(strings = {"", " ", "\n"})
     @DisplayName(FAIL_TYPE + "빈 문자열")
-    void 잘못된_입력값1_빈_문자열() {
+    void 잘못된_입력값1_빈_문자열(String input) {
         //given
-        String input = "";
         InputValidator inputValidator = new InputValidator();
 
         //when
@@ -103,7 +102,7 @@ class CountValidatorTest extends NsTest{
     @DisplayName(SUCCESS_TYPE + "양수인 경우")
     void 정상적인_입력값1(String input) {
         assertSimpleTest(() ->
-                assertThatCode(() -> runException("kim,lee", input))
+                assertThatCode(() -> run("kim,lee", input))
         );
     }
 
@@ -113,7 +112,7 @@ class CountValidatorTest extends NsTest{
     @DisplayName(SUCCESS_TYPE + "int 최대값")
     void 정상적인_입력값2(String input) {
         assertSimpleTest(() ->
-                assertThatCode(() -> runException("kim,lee", input))
+                assertThatCode(() -> run("kim,lee", input))
         );
     }
 
@@ -122,7 +121,7 @@ class CountValidatorTest extends NsTest{
     @DisplayName(SUCCESS_TYPE + "공백이 포함된 양수인 경우")
     void 정상적인_입력값3(String input) {
         assertSimpleTest(() ->
-                assertThatCode(() -> runException("kim,lee", input))
+                assertThatCode(() -> run("kim,lee", input))
         );
     }
 

@@ -2,15 +2,15 @@ package racingcar.config;
 
 import racingcar.constant.GameValue;
 import racingcar.controller.GameController;
-import racingcar.domain.CarGenerator;
+import racingcar.service.CarGenerator;
 import racingcar.domain.Game;
 import racingcar.domain.RandomNumberGenerator;
 import racingcar.domain.Rule;
 import racingcar.service.CarComponentGenerator;
 import racingcar.service.CountParser;
 import racingcar.service.NamesParser;
-import racingcar.validator.CountValidator;
-import racingcar.validator.NamesValidator;
+import racingcar.service.validator.CountValidator;
+import racingcar.service.validator.NamesValidator;
 
 public class AppConfig {
     public GameController gameController() {

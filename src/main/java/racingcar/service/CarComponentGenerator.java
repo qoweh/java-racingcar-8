@@ -1,7 +1,6 @@
 package racingcar.service;
 
 import java.util.List;
-import racingcar.dto.GameRequest;
 
 public class CarComponentGenerator {
     private final NamesParser namesParser;
@@ -12,11 +11,11 @@ public class CarComponentGenerator {
         this.countParser = countParser;
     }
 
-    public List<String> namesFrom(GameRequest gameRequest) {
-        return namesParser.parse(gameRequest);
+    public List<String> namesFrom(String input) {
+        return namesParser.parse(input);
     }
 
-    public int countFrom(GameRequest gameRequest) {
-        return countParser.parse(gameRequest);
+    public int countFrom(String  input) {
+        return countParser.parse(input);
     }
 }

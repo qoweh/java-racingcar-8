@@ -1,4 +1,4 @@
-package racingcar.validator;
+package racingcar.service.validator;
 
 import java.util.Collections;
 import java.util.List;
@@ -20,22 +20,16 @@ public class NamesValidator extends InputValidator {
 
     private void validateEmptyName(String name, String originalNames) {
         if (name.isEmpty()) {
+            consoleCleanUp();
             throw new IllegalArgumentException(
                     ValidatorMessage.EMPTY_SPECIFIC_NAME.with(originalNames)
             );
         }
     }
 
-    private void validateMixedBlank(String name) {
-        if (name.contains(BLANK)) {
-            throw new IllegalArgumentException(
-                    ValidatorMessage.EMPTY_EXIST.with(name)
-            );
-        }
-    }
-
     private void validateLength(String name) {
         if (name.length() > 5) {
+            consoleCleanUp();
             throw new IllegalArgumentException(
                     ValidatorMessage.TOO_LONG.with(name)
             );
@@ -44,6 +38,7 @@ public class NamesValidator extends InputValidator {
 
     private void validateDuplicate(List<String> names, String name) {
         if (Collections.frequency(names, name) != 1) {
+            consoleCleanUp();
             throw new IllegalArgumentException(
                     ValidatorMessage.SAME_NAME_EXIST.with(name)
             );

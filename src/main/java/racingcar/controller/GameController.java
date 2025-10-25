@@ -1,12 +1,10 @@
 package racingcar.controller;
 
 import java.util.List;
-
 import racingcar.domain.Car;
-import racingcar.service.CarComponentGenerator;
-import racingcar.domain.CarGenerator;
+import racingcar.service.CarGenerator;
 import racingcar.domain.Game;
-import racingcar.dto.GameRequest;
+import racingcar.service.CarComponentGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -22,10 +20,8 @@ public class GameController {
     }
 
     public void run() {
-        GameRequest gameRequest = InputView.readValues();
-
-        List<String> names = carComponentGenerator.namesFrom(gameRequest);
-        int count = carComponentGenerator.countFrom(gameRequest);
+        List<String> names = carComponentGenerator.namesFrom(InputView.readNames());
+        int count = carComponentGenerator.countFrom(InputView.readCount());
 
         List<Car> cars = carGenerator.from(names);
 
