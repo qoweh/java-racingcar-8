@@ -13,11 +13,8 @@ import racingcar.service.validator.NamesValidator;
 
 public class AppConfig {
     public GameController gameController() {
-        NamesValidator namesValidator = new NamesValidator();
-        NamesParser namesParser = new NamesParser(namesValidator);
-
-        CountValidator countValidator = new CountValidator();
-        CountParser countParser = new CountParser(countValidator);
+        NamesParser namesParser = new NamesParser(new NamesValidator());
+        CountParser countParser = new CountParser(new CountValidator());
 
         Generator generator = new Generator(namesParser, countParser);
 

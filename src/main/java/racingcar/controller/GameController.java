@@ -1,8 +1,8 @@
 package racingcar.controller;
 
-import java.util.List;
-import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.domain.Game;
+import racingcar.domain.Winners;
 import racingcar.service.Generator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -17,16 +17,16 @@ public class GameController {
     }
 
     public void run() {
-        List<Car> cars = generator.makeCar(InputView.readNames());
+        Cars cars = generator.makeCars(InputView.readNames());
         int count = generator.makeCount(InputView.readCount());
 
-        OutputView.gameStart();
+        OutputView.start();
         for (int i = 0; i < count; i++) {
-            game.play(cars);
+            game.eachRoundPlay(cars);
             OutputView.status(cars);
         }
 
-        List<String> winners = game.getWinners(cars);
+        Winners winners = game.getWinners(cars);
         OutputView.result(winners);
     }
 }
