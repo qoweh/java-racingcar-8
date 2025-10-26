@@ -19,13 +19,13 @@ public class NamesValidator extends InputValidator {
 
     private void validateEmptyName(String name, String input) {
         if (name.isEmpty()) {
-            throwExceptionWithCleanUp(ValidatorMessage.EMPTY_SPECIFIC_NAME, input);
+            throwException(ValidatorMessage.EMPTY_SPECIFIC_NAME, input);
         }
     }
 
     private void validateLength(String name) {
         if (name.length() > MAX_LENGTH) {
-            throwExceptionWithCleanUp(ValidatorMessage.TOO_LONG, name);
+            throwException(ValidatorMessage.TOO_LONG, name);
         }
     }
 
@@ -34,7 +34,7 @@ public class NamesValidator extends InputValidator {
                 .filter(eachName -> eachName.equals(name))
                 .count();
         if (count > 1) {
-            throwExceptionWithCleanUp(ValidatorMessage.SAME_NAME_EXIST, name);
+            throwException(ValidatorMessage.SAME_NAME_EXIST, name);
         }
     }
 }

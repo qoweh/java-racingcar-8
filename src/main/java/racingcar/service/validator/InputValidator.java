@@ -6,25 +6,21 @@ import racingcar.constant.ValidatorMessage;
 public class InputValidator {
     public void isNonEmptyString(String input) {
         if (input == null || input.isBlank()) {
-            consoleCleanUp();
-            throw new IllegalArgumentException(ValidatorMessage.EMPTY_ENTIRE_INPUT);
+            throwException(ValidatorMessage.EMPTY_ENTIRE_INPUT);
         }
     }
 
-    private void consoleCleanUp() {
+    public void throwException(String message) {
         Console.close();
+        throw new IllegalArgumentException(message);
     }
 
     public void throwException(String message, String target) {
+        Console.close();
         throw new IllegalArgumentException(with(message, target));
     }
 
-    private String with(String message, String second) {
-        return message + ValidatorMessage.NOTIFY_FORMAT + second;
-    }
-
-    public void throwExceptionWithCleanUp(String message, String target) {
-        consoleCleanUp();
-        throwException(message, target);
+    private String with(String message, String target) {
+        return message + ValidatorMessage.NOTIFY_FORMAT + target;
     }
 }
