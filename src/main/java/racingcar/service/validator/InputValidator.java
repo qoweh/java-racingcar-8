@@ -11,11 +11,20 @@ public class InputValidator {
         }
     }
 
-    public void consoleCleanUp() {
+    private void consoleCleanUp() {
         Console.close();
     }
 
-    public String with(String first, String second) {
-        return first + ValidatorMessage.NOTIFY_FORMAT + second;
+    public void throwException(String message, String target) {
+        throw new IllegalArgumentException(with(message, target));
+    }
+
+    private String with(String message, String second) {
+        return message + ValidatorMessage.NOTIFY_FORMAT + second;
+    }
+
+    public void throwExceptionWithCleanUp(String message, String target) {
+        consoleCleanUp();
+        throwException(message, target);
     }
 }
