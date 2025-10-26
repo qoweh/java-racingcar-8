@@ -14,6 +14,7 @@ public class OutputView {
     public static void status(Cars cars) {
         List<Car> carList = cars.getCars();
         carList.forEach(OutputView::eachCarStatus);
+
         System.out.println();
     }
 
