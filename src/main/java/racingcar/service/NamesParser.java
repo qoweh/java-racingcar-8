@@ -11,7 +11,6 @@ public class NamesParser {
     }
 
     public List<String> parse(String input) {
-        namesValidator.isNonEmptyString(input);
-        return namesValidator.isValidEachNameAndGet(input);
+        return namesValidator.isValidAndGet(input);
     }
 }

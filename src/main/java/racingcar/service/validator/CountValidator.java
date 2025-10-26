@@ -3,38 +3,38 @@ package racingcar.service.validator;
 import racingcar.constant.ValidatorMessage;
 
 public class CountValidator extends InputValidator {
-    private static final String NUMBER_TYPE = "(\\s)*-?\\d+(\\s)*";
-    private static final int UNREACHABLE = -1;
+    private static final String STRING_TYPE = "(\\s)*-?\\d+(\\s)*";
 
-    public void isValidNumberString(String input) {
-        validateNumber(input);
-        validatePositiveNumber(input);
+    public int isValidAndGet(String input) {
+        validateNonEmptyString(input);
+        validatePositiveNumeric(input);
+        return validateSizeAndGet(input);
     }
 
-    private void validateNumber(String input) {
-        if (!input.matches(NUMBER_TYPE)) {
+    private void validatePositiveNumeric(String input) {
+        if (!input.matches(STRING_TYPE)) {
             throwException(ValidatorMessage.INVALID_NUMBER, input);
         }
-    }
-
-    private void validatePositiveNumber(String input) {
         if (input.contains("-")) {
             throwException(ValidatorMessage.NEGATIVE_NUMBER, input);
         }
     }
 
-    public int isValidSizeAndGet(String input) {
+    private int validateSizeAndGet(String input) {
+        int count = 0;
+
         try {
-            int number = Integer.parseInt(input);
-            validateGreaterThanZero(input, number);
-            return number;
+            count = Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throwException(ValidatorMessage.TOO_BIG, input);
         }
-        return UNREACHABLE;
+
+        validateNotZero(count, input);
+
+        return count;
     }
 
-    private void validateGreaterThanZero(String input, int number) {
+    private void validateNotZero(int number, String input) {
         if (number == 0) {
             throwException(ValidatorMessage.ZERO_NUMBER, input);
         }

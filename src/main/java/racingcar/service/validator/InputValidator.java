@@ -4,18 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.constant.ValidatorMessage;
 
 public class InputValidator {
-    public void isNonEmptyString(String input) {
+    public void validateNonEmptyString(String input) {
         if (input == null || input.isBlank()) {
-            throwException(ValidatorMessage.EMPTY_ENTIRE_INPUT);
+            throwException(ValidatorMessage.EMPTY_ENTIRE_INPUT, input);
         }
     }
 
-    public void throwException(String message) {
-        Console.close();
-        throw new IllegalArgumentException(message);
-    }
-
-    public void throwException(String message, String target) {
+    public void throwException(String message, String target){
         Console.close();
         throw new IllegalArgumentException(with(message, target));
     }

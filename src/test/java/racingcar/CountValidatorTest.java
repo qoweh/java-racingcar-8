@@ -33,7 +33,7 @@ class CountValidatorTest extends NsTest{
         InputValidator inputValidator = new InputValidator();
 
         //when
-        Throwable throwable = catchThrowable(()-> inputValidator.isNonEmptyString(input));
+        Throwable throwable = catchThrowable(()-> inputValidator.validateNonEmptyString(input));
 
         //then
         assertThat(throwable)

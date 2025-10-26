@@ -12,9 +12,7 @@ public class CountParser {
     public int parse(String input) {
         String count = input.trim();
 
-        countValidator.isNonEmptyString(count);
-        countValidator.isValidNumberString(count);
-        return countValidator.isValidSizeAndGet(count);
+        return countValidator.isValidAndGet(count);
     }
 
 }

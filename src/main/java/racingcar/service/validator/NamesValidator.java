@@ -7,19 +7,23 @@ public class NamesValidator extends InputValidator {
     private static final int AS_MANY_AS_POSSIBLE = -1;
     private static final int MAX_LENGTH = 5;
 
-    public List<String> isValidEachNameAndGet(String input) {
+    public List<String> isValidAndGet(String input) {
+        validateNonEmptyString(input);
+
         List<String> splitNames = List.of(input.split(",", AS_MANY_AS_POSSIBLE));
+
         for (String eachName : splitNames) {
-            validateEmptyName(eachName, input);
+            validateEmptyName(eachName);
             validateLength(eachName);
             validateDuplicate(splitNames, eachName);
         }
+
         return splitNames;
     }
 
-    private void validateEmptyName(String name, String input) {
+    private void validateEmptyName(String name) {
         if (name.isEmpty()) {
-            throwException(ValidatorMessage.EMPTY_SPECIFIC_NAME, input);
+            throwException(ValidatorMessage.EMPTY_SPECIFIC_NAME, name);
         }
     }
 
