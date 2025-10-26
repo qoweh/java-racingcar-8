@@ -2,31 +2,23 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.service.CarGenerator;
 import racingcar.domain.Game;
-import racingcar.service.CarComponentGenerator;
+import racingcar.service.Generator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class GameController {
-    private final CarComponentGenerator carComponentGenerator;
-    private final CarGenerator carGenerator;
+    private final Generator generator;
     private final Game game;
 
-    public GameController(
-            CarComponentGenerator carComponentGenerator,
-            CarGenerator carGenerator,
-            Game game) {
-        this.carComponentGenerator = carComponentGenerator;
-        this.carGenerator = carGenerator;
+    public GameController(Generator generator, Game game) {
+        this.generator = generator;
         this.game = game;
     }
 
     public void run() {
-        List<String> names = carComponentGenerator.namesFrom(InputView.readNames());
-        int count = carComponentGenerator.countFrom(InputView.readCount());
-
-        List<Car> cars = carGenerator.from(names);
+        List<Car> cars = generator.makeCar(InputView.readNames());
+        int count = generator.makeCount(InputView.readCount());
 
         OutputView.gameStart();
         for (int i = 0; i < count; i++) {

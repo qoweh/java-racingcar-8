@@ -2,12 +2,11 @@ package racingcar.config;
 
 import racingcar.constant.GameValue;
 import racingcar.controller.GameController;
-import racingcar.service.CarGenerator;
 import racingcar.domain.Game;
 import racingcar.domain.RandomNumberGenerator;
 import racingcar.domain.Rule;
-import racingcar.service.CarComponentGenerator;
 import racingcar.service.CountParser;
+import racingcar.service.Generator;
 import racingcar.service.NamesParser;
 import racingcar.service.validator.CountValidator;
 import racingcar.service.validator.NamesValidator;
@@ -20,10 +19,7 @@ public class AppConfig {
         CountValidator countValidator = new CountValidator();
         CountParser countParser = new CountParser(countValidator);
 
-        CarComponentGenerator carComponentGenerator
-                = new CarComponentGenerator(namesParser, countParser);
-
-        CarGenerator carGenerator = new CarGenerator();
+        Generator generator = new Generator(namesParser, countParser);
 
         Rule rule = new Rule(GameValue.CONDITION_NUMBER);
         RandomNumberGenerator randomNumberGenerator
@@ -31,6 +27,6 @@ public class AppConfig {
 
         Game game = new Game(rule, randomNumberGenerator);
 
-        return new GameController(carComponentGenerator, carGenerator, game);
+        return new GameController(generator, game);
     }
 }
