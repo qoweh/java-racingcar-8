@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class Cars {
     private static final int INIT_SCORE = 0;
@@ -17,14 +18,11 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
     public List<String> getMaxCarList() {
         int maxScore = getMaxScore();
+
         return cars.stream()
-                .filter(car -> car.getScore() == maxScore)
+                .filter(car -> car.haveSameScore(maxScore))
                 .map(Car::getName)
                 .toList();
     }
@@ -34,5 +32,9 @@ public class Cars {
                 .mapToInt(Car::getScore)
                 .max()
                 .orElse(0);
+    }
+
+    public void forEachCar(Consumer<Car> action) {
+        cars.forEach(action);
     }
 }

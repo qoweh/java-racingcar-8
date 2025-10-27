@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import java.util.List;
 import racingcar.constant.OutputViewMessage;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
@@ -12,18 +11,16 @@ public class OutputView {
     }
 
     public static void status(Cars cars) {
-        List<Car> carList = cars.getCars();
-        carList.forEach(OutputView::eachCarStatus);
+        cars.forEachCar(OutputView::eachCarStatus);
 
         System.out.println();
     }
 
     private static void eachCarStatus(Car car) {
         String name = car.getName();
-        int score = car.getScore();
-        String scorePrint = OutputViewMessage.SCORE_SYMBOL.repeat(score);
+        String scoreStrings = car.makeCustomStringsOf(OutputViewMessage.SCORE_SYMBOL);
 
-        System.out.println(name + OutputViewMessage.STATUS_SYMBOL + scorePrint);
+        System.out.println(name + OutputViewMessage.STATUS_SYMBOL + scoreStrings);
     }
 
     public static void result(Winners winners) {

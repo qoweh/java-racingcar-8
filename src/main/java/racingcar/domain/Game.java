@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import java.util.List;
-
 public class Game {
     private final Rule rule;
     private final RandomNumberGenerator randomNumberGenerator;
@@ -12,8 +10,7 @@ public class Game {
     }
 
     public void eachRoundPlay(Cars cars) {
-        List<Car> carList = cars.getCars();
-        carList.forEach(this::eachRoundCarPlay);
+        cars.forEachCar(this::eachRoundCarPlay);
     }
 
     private void eachRoundCarPlay(Car car) {
